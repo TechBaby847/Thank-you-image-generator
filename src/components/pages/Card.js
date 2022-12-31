@@ -3,7 +3,6 @@ import Header from "../Header";
 import { Link } from "react-router-dom";
 import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
-import Image from "../images/3d-render-thank-you-lettering-typographical.jpg";
 
 // Function to randomly generate four images for user to pick from
 const CrdImg = () => {
@@ -12,18 +11,15 @@ const CrdImg = () => {
     bottomText: "",
     randomImage: "",
   });
-  const [allImages, setAllImages] = React.useState([]);
+  const [allImages, setAllImages] = React.useState('');
   let [ranGen, setRanGen] = React.useState(0);
 
   //Getting images through the api
   React.useEffect(() => {
-    // fetch("https://picsum.photos/v2/list?page=2&limit=50")
-    fetch("https://source.unsplash.com/random/300x300");
-    console.log()
-    // .then((res) => res.json())
-    // .then((data) => setAllImages(data))
-    // .then(setRanGen(Math.floor(Math.random() * 40)));
-  }, []);
+  fetch("https://source.unsplash.com/random/300x300")
+  .then((res) => setAllImages(res.url));
+
+  }, [cardImage.randomImage]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -56,6 +52,7 @@ const CrdImg = () => {
       <div className="form">
         <select
           className="selectimage"
+          id="selectimage"
           name="randomImage"
           onChange={handleChange}
         >
@@ -79,27 +76,28 @@ const CrdImg = () => {
         {cardImage.randomImage !== "" && (
           <img
             // src={allImages[cardImage.randomImage].download_url}
-            src={Image}
+            src={allImages}
             alt="An Image"
             className="meme--image"
           />
         )}
+
         {cardImage.randomImage !== "" && (
           <>
             <h2 className="meme--text top">{cardImage.topText}</h2>
             <h2 className="meme--text bottom">{cardImage.bottomText}</h2>
           </>
         )}
-</div>
+      </div>
 
-        {cardImage.randomImage !== "" && (
+      {cardImage.randomImage !== "" && (
         <button id="fileDownload" onClick={handleCaptureClick}>
           Download
         </button>
-        )}
-        <Link to="/">
-          <button id="btny">Return to home page</button>
-        </Link>
+      )}
+      <Link to="/">
+        <button id="btny">Return to home page</button>
+      </Link>
     </main>
   );
 };

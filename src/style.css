@@ -95,6 +95,10 @@ main button {
   cursor: pointer;
 }
 
+select#selectimage option[value="Image1"] {
+  background-image: url("https://source.unsplash.com/random/300x300");
+}
+
 .form--input {
   border-radius: 10px;
   border: 1px solid #6a5f8b;
@@ -314,7 +318,7 @@ main button {
 
 main {
   padding: 0;
-  height: 50rem;
+  height: 35rem;
 }
 
 main button {
@@ -334,7 +338,11 @@ main button {
 }
 
 .bottom {
-  bottom: 18rem;
+  bottom: 3rem;
+}
+
+#btny {
+  margin-left: 2rem;
 }
 
 }
