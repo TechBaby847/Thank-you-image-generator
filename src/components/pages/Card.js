@@ -31,7 +31,7 @@ const CrdImg = () => {
   };
 
   const handleCaptureClick = async () => {
-    const imageCardDownload = document.getElementById("meme");
+    const imageCardDownload = document.getElementById("meme--image");
     if (!imageCardDownload) return;
 
     const canvas = await html2canvas(imageCardDownload);
@@ -70,12 +70,12 @@ const CrdImg = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="meme" id="meme">
+      <div className="meme">
         {cardImage.randomImage !== "" && (
           <img
             src={allImages[cardImage.randomImage].download_url}
             alt=""
-            className="meme--image"
+            className="meme--image" id="meme--image"
           />
         )}
         {cardImage.randomImage !== "" && (
