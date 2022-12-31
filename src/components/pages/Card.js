@@ -1,14 +1,8 @@
 import React from "react";
 import Header from "../Header";
 import { Link } from "react-router-dom";
-
-  // const download = document.getElementById("fileDownload");
-  // download.addEventListener("click", request);
-
-  // function request() {
-  //   window.location =
-  //     "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg";
-  // }
+import downloadjs from "downloadjs";
+import html2canvas from "html2canvas";
 
 // Function to randomly generate four images for user to pick from
 const CrdImg = () => {
@@ -36,6 +30,21 @@ const CrdImg = () => {
     }));
   };
 
+  const handleCaptureClick = async () => {
+    const imageCardDownload = document.getElementById("meme");
+    if (!imageCardDownload) return;
+
+    const canvas = await html2canvas(imageCardDownload);
+    const dataURL = canvas.toDataURL(
+      "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
+    );
+    downloadjs(
+      dataURL,
+      "download.png",
+      "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
+    );
+  };
+
   return (
     <main>
       <Header />
@@ -61,7 +70,7 @@ const CrdImg = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="meme">
+      <div className="meme" id="meme">
         {cardImage.randomImage !== "" && (
           <img
             src={allImages[cardImage.randomImage].download_url}
@@ -76,7 +85,7 @@ const CrdImg = () => {
           </>
         )}
 
-        <button id="fileDownload">Download</button>
+        <button id="fileDownload" onClick={handleCaptureClick}>Download</button>
 
         <Link to="/">
           <button className="btny">Return to home page</button>
