@@ -146,6 +146,10 @@ main button {
   letter-spacing: 3px;
 }
 
+#btny {
+  margin-left: 0rem;
+}
+
 .top {
   top: 0;
 }
@@ -231,9 +235,8 @@ main button {
 
 .meme--image {
   width: 100%;
-  padding: 0 1.5rem;
+  padding: 0.5rem 1.5rem;
   margin-bottom: 3rem;
-  /* overflow: scroll; */
 }
 
 .meme--text {
@@ -401,7 +404,7 @@ main button {
 
 main {
   padding: 0;
-  height: 42rem;
+  height: 30rem;
 }
 
 main button {
@@ -421,7 +424,11 @@ main button {
 }
 
 .bottom {
-  bottom: 13rem;
+  bottom: 1rem;
+}
+
+#btny {
+  margin-left: 2rem;
 }
 
 }

@@ -3,6 +3,7 @@ import Header from "../Header";
 import { Link } from "react-router-dom";
 import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
+import Image from "../images/3d-render-thank-you-lettering-typographical.jpg";
 
 // Function to randomly generate four images for user to pick from
 const CrdImg = () => {
@@ -16,10 +17,12 @@ const CrdImg = () => {
 
   //Getting images through the api
   React.useEffect(() => {
-    fetch("https://picsum.photos/v2/list?page=2&limit=50")
-      .then((res) => res.json())
-      .then((data) => setAllImages(data))
-      .then(setRanGen(Math.floor(Math.random() * 40)));
+    // fetch("https://picsum.photos/v2/list?page=2&limit=50")
+    fetch("https://source.unsplash.com/random/300x300");
+    console.log()
+    // .then((res) => res.json())
+    // .then((data) => setAllImages(data))
+    // .then(setRanGen(Math.floor(Math.random() * 40)));
   }, []);
 
   const handleChange = (event) => {
@@ -32,16 +35,18 @@ const CrdImg = () => {
 
   const handleCaptureClick = async () => {
     const imageCardDownload = document.getElementById("meme--image");
+    console.log(imageCardDownload)
     if (!imageCardDownload) return;
 
     const canvas = await html2canvas(imageCardDownload);
     const dataURL = canvas.toDataURL(
-      "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
+      "image/png"
     );
     downloadjs(
       dataURL,
       "download.png",
-      "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
+      // cardImage.randomImage !== ""  && fetch(allImages[cardImage.randomImage].download_url).then((res) => res),
+      "image/png"
     );
   };
 
@@ -70,12 +75,13 @@ const CrdImg = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="meme">
+      <div id="meme--image" className="meme">
         {cardImage.randomImage !== "" && (
           <img
-            src={allImages[cardImage.randomImage].download_url}
-            alt=""
-            className="meme--image" id="meme--image"
+            // src={allImages[cardImage.randomImage].download_url}
+            src={Image}
+            alt="An Image"
+            className="meme--image"
           />
         )}
         {cardImage.randomImage !== "" && (
@@ -84,13 +90,16 @@ const CrdImg = () => {
             <h2 className="meme--text bottom">{cardImage.bottomText}</h2>
           </>
         )}
+</div>
 
-        <button id="fileDownload" onClick={handleCaptureClick}>Download</button>
-
+        {cardImage.randomImage !== "" && (
+        <button id="fileDownload" onClick={handleCaptureClick}>
+          Download
+        </button>
+        )}
         <Link to="/">
-          <button className="btny">Return to home page</button>
+          <button id="btny">Return to home page</button>
         </Link>
-      </div>
     </main>
   );
 };
