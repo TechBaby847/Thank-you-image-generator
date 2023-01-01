@@ -4,6 +4,23 @@ import { Link } from "react-router-dom";
 import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
 
+function toDataURL(src) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.crossOrigin = "anonymous";
+    image.src = src;
+    image.onload = function () {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      canvas.height = this.naturalHeight;
+      canvas.width = this.naturalWidth;
+      context.drawImage(this, 0, 0);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    image.onerror = () => reject("Could not load image");
+  });
+}
+
 // Function to randomly generate four images for user to pick from
 const CrdImg = () => {
   const [cardImage, setCardImage] = React.useState({
@@ -11,14 +28,17 @@ const CrdImg = () => {
     bottomText: "",
     randomImage: "",
   });
-  const [allImages, setAllImages] = React.useState('');
+  const [allImages, setAllImages] = React.useState("");
   let [ranGen, setRanGen] = React.useState(0);
 
   //Getting images through the api
   React.useEffect(() => {
-  fetch("https://source.unsplash.com/random/300x300")
-  .then((res) => setAllImages(res.url));
-
+    const getImageFromApi = async () => {
+      fetch("https://source.unsplash.com/random/300x300").then(({ url }) => {
+        toDataURL(url).then((dataUrl) => setAllImages(dataUrl));
+      });
+    };
+    getImageFromApi();
   }, [cardImage.randomImage]);
 
   const handleChange = (event) => {
@@ -31,19 +51,12 @@ const CrdImg = () => {
 
   const handleCaptureClick = async () => {
     const imageCardDownload = document.getElementById("meme--image");
-    console.log(imageCardDownload)
+    console.log(imageCardDownload);
     if (!imageCardDownload) return;
 
     const canvas = await html2canvas(imageCardDownload);
-    const dataURL = canvas.toDataURL(
-      "image/png"
-    );
-    downloadjs(
-      dataURL,
-      "download.png",
-      // cardImage.randomImage !== ""  && fetch(allImages[cardImage.randomImage].download_url).then((res) => res),
-      "image/png"
-    );
+    const dataURL = canvas.toDataURL("image/png");
+    downloadjs(dataURL, "download.png", "image/png");
   };
 
   return (
@@ -74,12 +87,7 @@ const CrdImg = () => {
       </div>
       <div id="meme--image" className="meme">
         {cardImage.randomImage !== "" && (
-          <img
-            // src={allImages[cardImage.randomImage].download_url}
-            src={allImages}
-            alt="An Image"
-            className="meme--image"
-          />
+          <img src={allImages} alt="" className="meme--image" />
         )}
 
         {cardImage.randomImage !== "" && (

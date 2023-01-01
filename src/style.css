@@ -126,7 +126,7 @@ select#selectimage option[value="Image1"] {
   position: relative;
   height: 100%;
   width: 100%;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .meme--image {
@@ -239,7 +239,7 @@ main button {
 
 .meme--image {
   width: 100%;
-  padding: 0.5rem 1.5rem;
+  /* padding: 0.5rem 1.5rem; */
   margin-bottom: 3rem;
 }
 
