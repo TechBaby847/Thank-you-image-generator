@@ -38,22 +38,6 @@ body {
   cursor: pointer;
 }
 
-main {
-  padding: 50px;
-}
-
-main button {
-  margin: 3rem 2rem;
-  padding: 1.2rem 4rem;
-  font-size: 2rem;
-  background: rgb(221, 221, 221);
-  border: 1px thin grey;
-  border-radius: 0.5rem;
-  background: #3e3941;
-  color: #fff;
-  cursor: pointer;
-}
-
 .header {
   display: flex;
   align-items: center;
@@ -78,6 +62,23 @@ main button {
   font-size: 15px;
   font-weight: 600;
 }
+
+main {
+  padding: 50px;
+}
+
+main button {
+  margin: 3rem 2rem;
+  padding: 1.2rem 4rem;
+  font-size: 2rem;
+  background: rgb(221, 221, 221);
+  border: 1px thin grey;
+  border-radius: 0.5rem;
+  background: #3e3941;
+  color: #fff;
+  cursor: pointer;
+}
+
 
 .form {
   height: 150px;
@@ -201,6 +202,22 @@ select#selectimage option[value="Image1"] {
   font-weight: 600;
 }
 
+main {
+  padding: 0 20px;
+  height: 80rem;
+}
+
+main button {
+  margin: 0.3rem 2rem;
+  padding: 1.2rem 4rem;
+  color: #fff;
+  font-size: 1rem;
+  background: #3e3941;
+  border: 1px thin grey;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
 .form {
   height: 40px;
   margin: 1rem 0;
@@ -221,21 +238,6 @@ select#selectimage option[value="Image1"] {
   margin-right: 1rem;
 }
 
-main {
-  padding: 0 20px;
-  height: 80rem;
-}
-
-main button {
-  margin: 0.3rem 2rem;
-  padding: 1.2rem 4rem;
-  color: #fff;
-  font-size: 1rem;
-  background: #3e3941;
-  border: 1px thin grey;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
 
 .meme--image {
   width: 100%;
@@ -257,6 +259,24 @@ main button {
 
 /* Styled for 414 x 896px (Mobile) */
 @media screen and (max-width: 414px) {
+  .home {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  
+  .home span {
+    font-size: 3rem;
+  }
+  
+  .home button {
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+    background: rgb(221, 221, 221);
+    border: 1px thin grey;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
 .header {
   display: flex;
   align-items: center;
@@ -278,19 +298,17 @@ main button {
   font-weight: 600;
 }
 
-.home {
-  text-align: center;
-  font-size: 1.3rem;
+main {
+  padding: 0;
+  height: 35rem;
 }
 
-.home span {
-  font-size: 3rem;
-}
-
-.home button {
-  padding: 0.5rem 1rem;
-  font-size: 1.3rem;
-  background: rgb(221, 221, 221);
+main button {
+  margin: 0.3rem 2rem;
+  padding: 1.2rem 4rem;
+  color: #fff;
+  font-size: 1rem;
+  background: #3e3941;
   border: 1px thin grey;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -316,22 +334,6 @@ main button {
   margin-right: 1rem;
 }
 
-main {
-  padding: 0;
-  height: 35rem;
-}
-
-main button {
-  margin: 0.3rem 2rem;
-  padding: 1.2rem 4rem;
-  color: #fff;
-  font-size: 1rem;
-  background: #3e3941;
-  border: 1px thin grey;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-
 .meme--text {
   font-size: 3rem;
   letter-spacing: 2px;
@@ -343,12 +345,30 @@ main button {
 
 #btny {
   margin-left: 2rem;
+
 }
 
 }
 
 /* Styled for 375 x 667px (Mobile) */
 @media screen and (max-width: 375px) {
+  .home {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  
+  .home span {
+    font-size: 3rem;
+  }
+  
+  .home button {
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+    background: rgb(221, 221, 221);
+    border: 1px thin grey;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
 .header {
   display: flex;
   align-items: center;
@@ -370,19 +390,17 @@ main button {
   font-weight: 600;
 }
 
-.home {
-  text-align: center;
-  font-size: 1.3rem;
+main {
+  padding: 0;
+  height: 30rem;
 }
 
-.home span {
-  font-size: 3rem;
-}
-
-.home button {
-  padding: 0.5rem 1rem;
-  font-size: 1.3rem;
-  background: rgb(221, 221, 221);
+main button {
+  margin: 0.3rem 2rem;
+  padding: 1.2rem 4rem;
+  color: #fff;
+  font-size: 1rem;
+  background: #3e3941;
   border: 1px thin grey;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -408,22 +426,6 @@ main button {
   height: 4rem;
   width: 11.5rem;
   margin-right: 1rem;
-}
-
-main {
-  padding: 0;
-  height: 30rem;
-}
-
-main button {
-  margin: 0.3rem 2rem;
-  padding: 1.2rem 4rem;
-  color: #fff;
-  font-size: 1rem;
-  background: #3e3941;
-  border: 1px thin grey;
-  border-radius: 0.5rem;
-  cursor: pointer;
 }
 
 .meme--text {

@@ -51,7 +51,6 @@ const CrdImg = () => {
 
   const handleCaptureClick = async () => {
     const imageCardDownload = document.getElementById("meme--image");
-    console.log(imageCardDownload);
     if (!imageCardDownload) return;
 
     const canvas = await html2canvas(imageCardDownload);
@@ -112,15 +111,3 @@ const CrdImg = () => {
 
 export default CrdImg;
 
-// {/* <button className="form--button" onClick={getCardImage}>
-//           Get a new card image <i className="fa-solid fa-images"></i>
-// </button> */}
-
-// function getCardImage() {
-//   const randomNumber = Math.floor(Math.random() * allImages.length);
-//   const url = allImages[randomNumber].url;
-//   setCardImage(prevImage => ({
-//     ...prevImage,
-//     randomImage: url
-//   }));
-// }
